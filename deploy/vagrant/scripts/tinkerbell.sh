@@ -5,7 +5,8 @@ set -euxo pipefail
 
 whoami
 
-cd /vagrant
+cp -rf /vagrant /tink
+cd /tink
 
 setup_docker() (
 	# steps from https://docs.docker.com/engine/install/ubuntu/
@@ -88,6 +89,8 @@ main() (
 	. ./.env
 
 	make_certs_writable
+
+	export TB_OSIE_TAR='/osie/osie.tar.gz'
 
 	./setup.sh
 
